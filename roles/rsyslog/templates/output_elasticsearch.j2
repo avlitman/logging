@@ -86,6 +86,14 @@ ruleset(name="{{ item.name }}") {
             tls.cacert="{{ __cacert }}"
             tls.mycert="{{ __mycert }}"
             tls.myprivkey="{{ __myprivkey }}"
+{%   if item.uid is defined %}
+{%     set __uid = item.uid %}
+{%   endif %}
+{%   if item.pwd is defined %}
+{%     set __pwd = item.pwd %}
+{%   endif %}
+            tls.uid="{{ __uid }}"
+            tls.pwd="{{ __pwd }}"
 {% endif %}
         )
     }
