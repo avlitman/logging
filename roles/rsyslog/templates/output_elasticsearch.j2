@@ -92,8 +92,8 @@ ruleset(name="{{ item.name }}") {
 {%   if item.pwd is defined %}
 {%     set __pwd = item.pwd %}
 {%   endif %}
-            tls.uid="{{ __uid }}"
-            tls.pwd="{{ __pwd }}"
+            uid="{{ __uid }}"
+            pwd="{{ __pwd }}"
 {% endif %}
         )
     }
