@@ -87,12 +87,10 @@ ruleset(name="{{ item.name }}") {
             tls.mycert="{{ __mycert }}"
             tls.myprivkey="{{ __myprivkey }}"
 {%   if item.uid is defined %}
-{%     set __uid = item.uid %}
-            uid="{{ __uid }}"
+            uid="{{ item.uid }}"
 {%   endif %}
 {%   if item.pwd is defined %}
-{%     set __pwd = item.pwd %}
-            pwd="{{ __pwd }}"
+            pwd="{{ item.pwd }}"
 {%   endif %}
 {% endif %}
         )
