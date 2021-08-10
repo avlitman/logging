@@ -307,6 +307,7 @@
         loop_var: output_item
       when:
         - output_item | d([])
+      no_log: true
 
     - name: Run output sub-tasks
       include_tasks:
@@ -318,6 +319,7 @@
         loop_var: output_item
       when:
         - output_item | d([])
+      no_log: true
 
     - name: Enable rsyslog service
       service:

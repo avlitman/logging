@@ -30,3 +30,4 @@
   include_tasks:
     file: "{{ role_path }}/tasks/deploy.yml"
   loop: '{{ rsyslog_output_elasticsearch }}'
+  no_log: true

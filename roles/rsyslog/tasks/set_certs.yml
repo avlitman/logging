@@ -12,6 +12,7 @@
       with_items:
         - '{{ __rsyslog_cert_subject }}'
       when: item.ca_cert_src | d()
+      no_log: true
 
     - name: "Copy cert on the control host to the specified path
       on the target host"
@@ -23,6 +24,7 @@
       with_items:
         - '{{ __rsyslog_cert_subject }}'
       when: item.cert_src | d()
+      no_log: true
 
     - name: "Copy key on the control host to the specified path
       on the target host"
@@ -34,6 +36,7 @@
       with_items:
         - '{{ __rsyslog_cert_subject }}'
       when: item.private_key_src | d()
+      no_log: true
 
     - name: Check certs - tls is true, but triplets are not given
       fail:
@@ -49,6 +52,7 @@
                 item.private_key | d()) or
                (item.ca_cert_src | d() and item.cert_src | d() and
                 item.private_key_src | d()))
+      no_log: true
 
     - name: Check certs - key/certs data are provided, but tls is false
       fail:
@@ -63,4 +67,5 @@
         - item.ca_cert_src | d() or
           item.cert_src | d() or
           item.private_key_src | d()
+      no_log: true
   when: __rsyslog_cert_subject | d([])

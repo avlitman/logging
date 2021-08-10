@@ -9,6 +9,7 @@
           selectattr('type', 'defined') |
           selectattr('type', 'match', '^elasticsearch$') |
           selectattr('server_host', 'defined') | list }}"
+      no_log: true
 
     - name: Set rsyslog_output_files for the omfile outputs
       set_fact:
@@ -61,6 +62,7 @@
           {{ rsyslog_output_forwards | d([]) }} +
           {{ rsyslog_output_remote_files | d([]) }} +
           {{ rsyslog_output_relp | d([]) }}'
+      no_log: true
 
     - name: Set custom_config_files fact
       set_fact:
@@ -69,6 +71,7 @@
       when:
         - item.type | d('') == 'custom'
         - logging_enabled | d(true)
+      no_log: true
 
     - block:
         - name: Check logging_inputs item in logging_flows.inputs
