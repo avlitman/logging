@@ -28,5 +28,5 @@
         owner: "root"
         group: "root"
   include_tasks:
-    file: "{{ role_path }}/tasks/deploy.yml"
+    file: "{{ role_path }}/tasks/deploy_nolog.yml"
   loop: '{{ rsyslog_output_elasticsearch }}'
