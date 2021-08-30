@@ -175,6 +175,16 @@
       command: /bin/grep 'server="logging-es-ops"' {{ __test_es_ops_conf }}
       changed_when: false
 
+    - name: Check password is in "{{ __test_es_conf }}"
+      command: /bin/grep 'pwd="password0"'  {{ __test_es_conf }}
+      changed_when: false
+
+    - name: Check pwd= is not in "{{ __test_es_ops_conf }}"
+      command: /bin/grep "pwd="  {{ __test_es_ops_conf }}
+      register: __result
+      changed_when: false
+      failed_when: __result.rc != 1
+
     - name: END TEST CASE 0; Ensure basic ovirt configuration works
       vars:
         logging_enabled: false
